@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Rock Paper Scissors — Yogya</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+  <div class="container" style="max-width:760px">
+    <header style="text-align:center;margin-bottom:1rem">
+      <img src="images/profile.jpg" alt="Yogya" class="profile" style="width:120px;height:120px">
+      <h1 style="margin:0.6rem 0 0">Rock Paper Scissors (C)</h1>
+      <p class="small">A compact C program demonstrating input, randomness and conditionals.</p>
+    </header>
+    <section class="card"><h3 class="section-title">Project Summary</h3>
+      <p class="small">This project is a simple Rock Paper Scissors mini-game developed in C language. It allows a user to play against the computer. The user chooses between Rock, Paper, or Scissors by entering 1, 2, or 3. The computer’s choice is generated randomly using the rand() function. After both choices are made, the program compares them and displays the result — whether it’s a win, loss, or draw.</p>
+    </section>
+    <section class="card"><h3 class="section-title">Source Code</h3>
+      <pre class="code-block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int userChoice, computerChoice;
+
+    printf("=== Rock Paper Scissors Game ===\n");
+    printf("Enter your choice:\n");
+    printf("1. Rock\n2. Paper\n3. Scissors\n");
+    printf("Your choice: ");
+    scanf("%d", &userChoice);
+
+    if (userChoice &lt; 1 || userChoice &gt; 3) {
+        printf("Invalid choice! Please enter 1, 2, or 3.\n");
+        return 0;
+    }
+
+    srand(time(0));
+    computerChoice = (rand() % 3) + 1;
+
+    printf("Computer chose: ");
+    if (computerChoice == 1) printf("Rock\n");
+    else if (computerChoice == 2) printf("Paper\n");
+    else printf("Scissors\n");
+
+    if (userChoice == computerChoice) {
+        printf("It's a draw!\n");
+    } else if ((userChoice == 1 && computerChoice == 3) ||
+               (userChoice == 2 && computerChoice == 1) ||
+               (userChoice == 3 && computerChoice == 2)) {
+        printf("You win!\n");
+    } else {
+        printf("Computer wins!\n");
+    }
+
+    return 0;
+}</pre>
+    </section>
+    <p style="text-align:center;margin-top:1rem"><a class="btn" href="../Yogya_Portfolio/index.html">Back to Portfolio</a></p>
+  </div>
+</body></html>
