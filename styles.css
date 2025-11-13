@@ -1,0 +1,26 @@
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --accent: #1e3a8a;
+  --text: #111827;
+  --muted: #6b7280;
+  --shadow: 0 6px 18px rgba(30, 58, 138, 0.08);
+  --radius: 12px;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 950px; margin: 0 auto; padding: 2rem; }
+header { text-align: center; padding: 2rem 0 1rem; }
+.profile { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff; box-shadow: var(--shadow); object-fit: cover; }
+h1.name { font-size: 1.9rem; margin: 0.8rem 0 0.2rem; font-weight: 700; }
+.title { color: var(--muted); margin: 0 0 1rem; }
+.btn-linkedin { background: var(--accent); color: #fff; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; transition: 0.2s; display: inline-block; }
+.btn-linkedin:hover { opacity: 0.9; transform: translateY(-2px); }
+.card { background: var(--card); padding: 1.3rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.2rem; }
+.section-title { color: var(--accent); margin-bottom: 0.6rem; }
+pre.code-block { background: #0b1220; color: #e6eef8; padding: 1rem; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.4; }
+.small { color: var(--muted); font-size: 0.95rem; }
+footer { text-align: center; padding: 2rem 0; color: var(--muted); font-size: 0.95rem; }
+a { color: var(--accent); }

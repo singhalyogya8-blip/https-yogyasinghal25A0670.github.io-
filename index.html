@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yogya Singhal — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <img src="images/profile.jpg" alt="Yogya Singhal" class="profile" />
+    <h1 class="name">Yogya Singhal</h1>
+    <p class="title">Student — Delhi Technological University</p>
+    <a class="btn-linkedin" href="https://www.linkedin.com/in/yogya-singhal-609600258/" target="_blank">LinkedIn</a>
+    <p class="small" style="margin-top:0.6rem;">Enthusiastic web developer • HTML • CSS • C • C++ (basic)</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 class="section-title">About Me</h2>
+      <p>I am currently studying at <strong>Delhi Technological University (DTU)</strong>. I completed my 10th from <strong>Bal Bharati Public School, Rohini Sector 14</strong> and 12th from <strong>Khemo Devi Public School, Narela</strong>. I enjoy creating small coding projects in C and designing simple web pages using HTML and CSS.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Education</h2>
+      <p class="small"><strong>Current:</strong> Delhi Technological University</p>
+      <p class="small"><strong>10th:</strong> Bal Bharati Public School, Rohini Sector 14</p>
+      <p class="small"><strong>12th:</strong> Khemo Devi Public School, Narela</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Skills</h2>
+      <p class="small">HTML, CSS, C, C++ (basic), and a passion for learning new technologies and building small projects.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Project 1 — Rock Paper Scissors (C)</h2>
+      <p class="small">This project is a simple Rock Paper Scissors mini-game developed in C language. It allows a user to play against the computer. The program demonstrates the use of conditional statements, random number generation, and user input handling in C programming.</p>
+      <pre class="code-block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int userChoice, computerChoice;
+
+    printf("=== Rock Paper Scissors Game ===\n");
+    printf("Enter your choice:\n");
+    printf("1. Rock\n2. Paper\n3. Scissors\n");
+    printf("Your choice: ");
+    scanf("%d", &userChoice);
+
+    if (userChoice &lt; 1 || userChoice &gt; 3) {
+        printf("Invalid choice! Please enter 1, 2, or 3.\n");
+        return 0;
+    }
+
+    srand(time(0));
+    computerChoice = (rand() % 3) + 1;
+
+    printf("Computer chose: ");
+    if (computerChoice == 1) printf("Rock\n");
+    else if (computerChoice == 2) printf("Paper\n");
+    else printf("Scissors\n");
+
+    if (userChoice == computerChoice) {
+        printf("It's a draw!\n");
+    } else if ((userChoice == 1 && computerChoice == 3) ||
+               (userChoice == 2 && computerChoice == 1) ||
+               (userChoice == 3 && computerChoice == 2)) {
+        printf("You win!\n");
+    } else {
+        printf("Computer wins!\n");
+    }
+
+    return 0;
+}</pre>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Project 2 — Library Management System (C)</h2>
+      <p class="small">My project is a Library Management System developed in C language. It helps manage a small collection of books in a library by allowing the user to add, display, search, issue, and return books. This project demonstrates the use of structures, conditionals, loops, and string handling in C programming.</p>
+      <pre class="code-block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct Book {
+    int id;
+    char title[100];
+    char author[100];
+    int available;
+};
+
+int main() {
+    struct Book books[100];
+    int count = 0, choice, id, i;
+    char title[100];
+
+    while (1) {
+        printf("\n=== Library Management System ===\n");
+        printf("1. Add Book\n2. Display Books\n3. Search Book\n4. Issue Book\n5. Return Book\n6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter Book ID: ");
+                scanf("%d", &books[count].id);
+                printf("Enter Book Title: ");
+                getchar();
+                gets(books[count].title);
+                printf("Enter Author Name: ");
+                gets(books[count].author);
+                books[count].available = 1;
+                count++;
+                printf("Book added successfully!\n");
+                break;
+
+            case 2:
+                printf("\n--- Book List ---\n");
+                for (i = 0; i &lt; count; i++) {
+                    printf("ID: %d | Title: %s | Author: %s | %s\n",
+                           books[i].id, books[i].title, books[i].author,
+                           books[i].available ? "Available" : "Issued");
+                }
+                break;
+
+            case 3:
+                printf("Enter Book Title to search: ");
+                getchar();
+                gets(title);
+                for (i = 0; i &lt; count; i++) {
+                    if (strcmp(books[i].title, title) == 0) {
+                        printf("Book found - ID: %d | Author: %s | %s\n",
+                               books[i].id, books[i].author,
+                               books[i].available ? "Available" : "Issued");
+                        break;
+                    }
+                }
+                if (i == count) printf("Book not found.\n");
+                break;
+
+            case 4:
+                printf("Enter Book ID to issue: ");
+                scanf("%d", &id);
+                for (i = 0; i &lt; count; i++) {
+                    if (books[i].id == id) {
+                        if (books[i].available) {
+                            books[i].available = 0;
+                            printf("Book issued successfully!\n");
+                        } else {
+                            printf("Book already issued.\n");
+                        }
+                        break;
+                    }
+                }
+                if (i == count) printf("Book not found.\n");
+                break;
+
+            case 5:
+                printf("Enter Book ID to return: ");
+                scanf("%d", &id);
+                for (i = 0; i &lt; count; i++) {
+                    if (books[i].id == id) {
+                        books[i].available = 1;
+                        printf("Book returned successfully!\n");
+                        break;
+                    }
+                }
+                if (i == count) printf("Book not found.\n");
+                break;
+
+            case 6:
+                printf("Exiting the program.\n");
+                exit(0);
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
+    return 0;
+}</pre>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Contact</h2>
+      <p class="small"><strong>Email:</strong> <a href="mailto:singhalyogya8@gmail.com">singhalyogya8@gmail.com</a></p>
+      <p class="small"><strong>Phone:</strong> +91-9319775404</p>
+    </section>
+  </main>
+
+  <footer>© 2025 Yogya Singhal — Delhi Technological University</footer>
+</body>
+</html>
